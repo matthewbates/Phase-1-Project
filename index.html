@@ -5,22 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Pokedex Project</title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Rubik&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="style.css" />
     <script defer src="index.js"></script>
-    <link ref="stylesheet" type="text/css" href=index.css"/>
   </head>
 
   <body>
     <div class="container">
       <h1>Pokedex</h1>
     </div>
-    
-    <!--pokemon information-->
-    <div id="pokemon-info">
 
+    <!--<div> displaying pokemon stats (no., name, )-->
+    <div></div>
+    <!--<div> displaying pokemon image when clicked-->
+    <div></div>
+    <!--<form> containing persisted, submitted comments for a pokemon-->
+    <form id="review-form">
+      <textarea id="pokemon-comment"></textarea>
+      <button type="submit">Add comment</button>
+    </form>
+
+    <!--pokemon card container-->
+    <div id="pokemon-container">
+      <!--<div> displaying each pokemon-->
+      <div class="pokemon-card">
+        <!--pokemon name here-->
+        <h2></h2>
+        <!--pokemon image here-->
+        <img src="" />
+        <!--pokemon no. here-->
+        <p></p>
+      </div>
     </div>
     <!---->
   </body>

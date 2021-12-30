@@ -1,0 +1,33 @@
+body {
+  background-color: pink;
+}
+
+h1 {
+  text-align: center;
+}
+
+#pokemon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+#pokemon-comment {
+  float: right;  
+}
+
+button {
+float: right;  
+
+}
+
+#pokemon-container {
+  text-align: center;
+  background-color: white;
+  border: black solid 1px;
+  width: 10rem;
+  height: 10rem;
+}
