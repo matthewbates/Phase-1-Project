@@ -3,7 +3,6 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 const pokemonImage = document.createElement("img");
 const pokemonContainer = document.querySelector("#pokemon-container");
 
-console.log(pokemonContainer);
 // **********************************FETCHES**************************************
 // fetch containing array with all pokemon
 function getPokemonArray() {
@@ -25,17 +24,18 @@ function getPokemonDescription(pokemonObj) {
 }
 
 function renderArray(pokeArray) {
-  // renders the default-front image from sprite property
-    // front_default
-  console.log(pokeArray.sprites);
-  //   console.log(pokeArray.flavor_text_entries[0].flavor_text);
+  // creating single pokemon object
+  const pokemon = {};
+  pokemon["name"] = pokeArray.name; // pokemon name
+  pokemon["id"] = pokeArray.id; // pokemon no.
+  pokemon["image"] = pokeArray.sprites; // pokemon image - how can we grab front_default?
+  pokemon["type"] = pokeArray.types // how can we iterate through types array?
+  console.log(pokemon);
+
+  // depending on the index provided, this will give us the pokemon name, id, and image from pokemon object
   loadOnePokemon(pokeArray.results[0]);
-    console.log(getPokemonDescription(pokeArray.results[0]));
-
+  // console.log(getPokemonDescription(pokeArray.results[0]));
 }
-
-// fetch all of the name stats from pokemon page
-// fetch the pokemon description from there
 
 // initializers
 getPokemonArray();

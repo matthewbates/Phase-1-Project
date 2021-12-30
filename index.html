@@ -11,22 +11,30 @@
 
   <body>
     <div class="container">
-      <h1>Pokedex</h1>
+      <h1><u>Pokedex</h1></u></h1>
     </div>
 
-    <!--<div> displaying pokemon stats (no., name, )-->
-    <div></div>
+    <!--<div> displaying pokemon stats (no., name, etc.)-->
+      <!--create a <span> tag using JavaScript to display stats?-->
+    <div id="pokemon-stats"></div>
     <!--<div> displaying pokemon image when clicked-->
-    <div></div>
+      <!--create a <span> tag using JavaScript to display image?-->
+    <div id="pokemon-image"></div>
     <!--<form> containing persisted, submitted comments for a pokemon-->
-    <form id="review-form">
-      <textarea id="pokemon-comment"></textarea>
-      <button type="submit">Add comment</button>
+    <form id="pokemon-comments">
+      <ol>
+        <ul>
+          <input type="text" placeholder="insert comment" />
+          <br />
+          <input type="submit" />
+        </ul>
+      </ol>
     </form>
 
     <!--pokemon card container-->
     <div id="pokemon-container">
       <!--<div> displaying each pokemon-->
+        <!--alternatively we write JavaScript to include a <div> and include .className for "pokemon-card"-->
       <div class="pokemon-card">
         <!--pokemon name here-->
         <h2></h2>
