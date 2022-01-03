@@ -83,12 +83,13 @@ newReview.addEventListener("submit", (e) => {
 
 function renderDisplay(pokemon) {
   // creating single pokemon object
+  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   pokemonDisplay.innerHTML = `
-            <p>${pokemon.name}</p>
+            <p><b>${name}</b></p>
             <img src="${pokemon.sprites.other["official-artwork"].front_default}" id="display-image" alt="">
             <p>${pokemon.id}</p>
             `;
-  console.log(pokemon.types);
+  console.log(pokemon);
 
   // depending on the index provided, this will give us the pokemon name, id, and image from pokemon object
   // loadOnePokemon(pokeArray.results[0]);
@@ -114,16 +115,15 @@ function renderInfo(pokemon) {
   const card = document.querySelector(`#${pokemon.name}`);
   const image = document.createElement("img");
   const p = document.createElement("p");
+  card.classList.add(pokemon.types[0].type.name);
   p.textContent = "No. " + pokemon.id;
   image.className = "card-image";
   image.src = pokemon.sprites.front_default;
   card.appendChild(image);
   card.appendChild(p);
-}
 
-// function onClick(event) {
-//   console.log("Ive been clickee")
-// }
+  // mouse-over event to show back_default of pokemon?
+}
 
 // ***INITIALIZERS***
 

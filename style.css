@@ -71,11 +71,8 @@ h1 {
   background: white;
   border-radius: 30px;
   border: 2px solid royalblue;
-  /*height: 200px;*/
+  font-size: 35%;
   font-family: "Futura Pro", sans-serif;
-  font-stretch: ultra-condensed;
-  /* font-family: "Pokemon Solid", sans-serif; */
-  letter-spacing: 5px;
   text-align: center;
 }
 
@@ -88,4 +85,68 @@ h1 {
 .card:hover {
   transform: scale(1.1);
   box-shadow: 1px 2px 15px 4px #000000;
+}
+
+.normal {
+  background: #a8a878;
+}
+
+.fire {
+  background: #f08030;
+}
+
+.water {
+  background: #6890f0;
+}
+
+.electric {
+  background: #f8d030;
+}
+
+.grass {
+  background: #78c850;
+}
+
+.ice {
+  background: #98d8d8;
+}
+
+.ground {
+  background: #e0c068;
+}
+
+.flying {
+  background: #a890f0;
+}
+
+.ghost {
+  background: #705898;
+}
+
+.rock {
+  background: #b8a038;
+}
+
+.fighting {
+  background: #c03028;
+}
+p
+.poison {
+  background: #a040a0;
+}
+
+.psychic {
+  background: #f85888;
+}
+
+.bug {
+  background: #a8b820;
+}
+
+.dark {
+  background: #705848;
+}
+
+.fighting {
+  background: #c03028;
 }
