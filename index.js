@@ -1,11 +1,29 @@
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
-
-// DOM global selectors
 const cardsDisplay = document.querySelector("#cards");
 const pokemonDisplay = document.querySelector("#pokemon-display");
 const newReview = document.querySelector("#review-form");
 const reviewPosts = document.querySelector("#posted-reviews");
 console.log(reviewPosts);
+
+const pokemonTypes = {
+  normal: "#A8A878",
+  fire: "#F08030",
+  water: "#6890F0",
+  electric: "#F8D030",
+  grass: "#78C850",
+  ice: "#98D8D8",
+  ground: "#E0C068",
+  flying: "#A890F0",
+  ghost: "#705898",
+  rock: "#B8A038",
+  fighting: "#C03028",
+  poison: "#A040A0",
+  psychic: "#F85888",
+  bug: "#A8B820",
+  dark: "#705848",
+  steel: "#B8B8D0",
+  dragon: "#7038F8",
+};
 
 // **********************************FETCHES**************************************
 
