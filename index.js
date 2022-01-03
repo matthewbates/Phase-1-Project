@@ -25,7 +25,7 @@ const pokemonTypes = {
   dragon: "#7038F8",
 };
 
-// **********************************FETCHES**************************************
+// ***FETCHES***
 
 // GET Array of Pokemon
 function getPokemonArray() {
@@ -41,7 +41,9 @@ function getPokemonArray() {
 // Scroll To The Top Of The Page
 function scrollToTop() {
   const button = document.createElement("button");
-  button.addEventListener("click", (e) => cardsDisplay.animate({ scrollTop: 0 }, "fast"));
+  button.addEventListener("click", (e) =>
+    cardsDisplay.animate({ scrollTop: 0 }, "fast")
+  );
   button.textContent = "Back to Top";
   cardsDisplay.appendChild(button);
 }
@@ -52,12 +54,14 @@ function loadPokemonCard(pokemonObj) {
     .then((response) => response.json())
     .then((pokemon) => renderInfo(pokemon));
 }
+
 // GET Single Pokemon Details
 function loadOnePokemon(pokemonObj) {
   fetch(`${pokeUrl}/${pokemonObj.name}`)
     .then((response) => response.json())
     .then((pokemon) => renderDisplay(pokemon));
 }
+
 // GET Pokemon Species that copnstains Description
 function getPokemonDescription(pokemonObj) {
   fetch(`${pokeUrl}-species/${pokemonObj.name}`)
@@ -65,7 +69,8 @@ function getPokemonDescription(pokemonObj) {
     .then((species) => console.log(species));
 }
 
-// **********************************LISTENERS**************************************
+// ***LISTENERS***
+
 newReview.addEventListener("submit", (e) => {
   e.preventDefault();
   const p = document.createElement("p");
@@ -74,7 +79,7 @@ newReview.addEventListener("submit", (e) => {
   newReview.reset();
 });
 
-// **********************************FUNCTIONS**************************************
+// ***FUNCTIONS***
 
 function renderDisplay(pokemon) {
   // creating single pokemon object
@@ -82,8 +87,8 @@ function renderDisplay(pokemon) {
             <p>${pokemon.name}</p>
             <img src="${pokemon.sprites.other["official-artwork"].front_default}" id="display-image" alt="">
             <p>${pokemon.id}</p>
-  `;
-  console.log(pokemon);
+            `;
+  console.log(pokemon.types);
 
   // depending on the index provided, this will give us the pokemon name, id, and image from pokemon object
   // loadOnePokemon(pokeArray.results[0]);
@@ -108,18 +113,18 @@ function renderCard(pokemon) {
 function renderInfo(pokemon) {
   const card = document.querySelector(`#${pokemon.name}`);
   const image = document.createElement("img");
-  const p = document.createElement('p')
-  p.textContent = "No. " + pokemon.id
-  image.className = "card-image"
+  const p = document.createElement("p");
+  p.textContent = "No. " + pokemon.id;
+  image.className = "card-image";
   image.src = pokemon.sprites.front_default;
   card.appendChild(image);
-  card.appendChild(p)
+  card.appendChild(p);
 }
 
 // function onClick(event) {
 //   console.log("Ive been clickee")
 // }
 
-// **********************************INITIALIZERS**************************************
+// ***INITIALIZERS***
 
 getPokemonArray();
