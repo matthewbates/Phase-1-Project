@@ -22,7 +22,7 @@ h1 {
 .container {
   display: grid;
   grid-template-columns: 66% 33%;
-  grid-template-rows: 500px auto;
+  grid-template-rows: 25% auto;
   height: auto;
   gap: 10px;
 }
@@ -71,9 +71,18 @@ h1 {
   background: white;
   border-radius: 30px;
   border: 2px solid royalblue;
-  height: 300px;
-  font-family: "Pokemon Solid", sans-serif;
+  /*height: 200px;*/
+  font-family: "Futura Pro", sans-serif;
+  font-stretch: ultra-condensed;
+  /* font-family: "Pokemon Solid", sans-serif; */
   letter-spacing: 5px;
+  text-align: center;
+}
+
+.card-image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card:hover {

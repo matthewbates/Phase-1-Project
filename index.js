@@ -3,6 +3,9 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 // DOM global selectors
 const cardsDisplay = document.querySelector("#cards");
 const pokemonDisplay = document.querySelector("#pokemon-display");
+const newReview = document.querySelector("#review-form");
+const reviewPosts = document.querySelector("#posted-reviews");
+console.log(reviewPosts);
 
 // **********************************FETCHES**************************************
 
@@ -10,9 +13,26 @@ const pokemonDisplay = document.querySelector("#pokemon-display");
 function getPokemonArray() {
   fetch(pokeUrl + "?limit=151")
     .then((response) => response.json())
-    .then((arrayOfPokemon) =>
-      arrayOfPokemon.results.forEach((pokemon) => renderCard(pokemon))
-    );
+    .then((arrayOfPokemon) => {
+      arrayOfPokemon.results.forEach((pokemon) => renderCard(pokemon));
+      arrayOfPokemon.results.forEach((pokemon) => loadPokemonCard(pokemon));
+      scrollToTop();
+    });
+}
+
+// Scroll To The Top Of The Page
+function scrollToTop() {
+  const button = document.createElement("button");
+  button.addEventListener("click", (e) => cardsDisplay.animate({ scrollTop: 0 }, "fast"));
+  button.textContent = "Back to Top";
+  cardsDisplay.appendChild(button);
+}
+
+// GET Pokemon Image
+function loadPokemonCard(pokemonObj) {
+  fetch(`${pokeUrl}/${pokemonObj.name}`)
+    .then((response) => response.json())
+    .then((pokemon) => renderInfo(pokemon));
 }
 // GET Single Pokemon Details
 function loadOnePokemon(pokemonObj) {
@@ -27,21 +47,25 @@ function getPokemonDescription(pokemonObj) {
     .then((species) => console.log(species));
 }
 
+// **********************************LISTENERS**************************************
+newReview.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const p = document.createElement("p");
+  p.textContent = e.target["text-field"].value;
+  reviewPosts.appendChild(p);
+  newReview.reset();
+});
+
 // **********************************FUNCTIONS**************************************
 
-function renderDisplay(pokeArray) {
+function renderDisplay(pokemon) {
   // creating single pokemon object
-  const pokemon = {};
-  pokemon["name"] = pokeArray.name; // pokemon name
-  pokemon["id"] = pokeArray.id; // pokemon no.
-  pokemon["image"] = pokeArray.sprites; // pokemon image - how can we grab front_default?
-  pokemon["type"] = pokeArray.types; // how can we iterate through types array?
-  console.log(pokemon);
   pokemonDisplay.innerHTML = `
-            <h1>${pokemon.name}</h1>
-            <img src="${pokemon.image.other["official-artwork"].front_default}" id="display-image" alt="">
+            <p>${pokemon.name}</p>
+            <img src="${pokemon.sprites.other["official-artwork"].front_default}" id="display-image" alt="">
             <p>${pokemon.id}</p>
   `;
+  console.log(pokemon);
 
   // depending on the index provided, this will give us the pokemon name, id, and image from pokemon object
   // loadOnePokemon(pokeArray.results[0]);
@@ -51,12 +75,32 @@ function renderDisplay(pokeArray) {
 function renderCard(pokemon) {
   const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const div = document.createElement("div");
+  div.addEventListener("click", (e) => {
+    loadOnePokemon(pokemon);
+    reviewPosts.innerHTML = "";
+  });
   div.className = "card";
+  div.id = pokemon.name;
   div.innerHTML = `
       <h1>${name}</h1>
   `;
   cardsDisplay.appendChild(div);
 }
+
+function renderInfo(pokemon) {
+  const card = document.querySelector(`#${pokemon.name}`);
+  const image = document.createElement("img");
+  const p = document.createElement('p')
+  p.textContent = "No. " + pokemon.id
+  image.className = "card-image"
+  image.src = pokemon.sprites.front_default;
+  card.appendChild(image);
+  card.appendChild(p)
+}
+
+// function onClick(event) {
+//   console.log("Ive been clickee")
+// }
 
 // **********************************INITIALIZERS**************************************
 
