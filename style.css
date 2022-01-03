@@ -1,5 +1,5 @@
 body {
-  background-color: pink;
+  background-color: blue;
 }
 
 h1 {
@@ -17,4 +17,66 @@ h1 {
 
 #pokemon-comments {
   float: right;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 66% 33%;
+  grid-template-rows: 500px auto;
+  height: auto;
+  gap: 10px;
+}
+
+#pokemon-display {
+  background: white;
+}
+
+#pokemon-display h1 {
+  text-align: left;
+  font-size: 50px;
+}
+
+#display-image {
+  width: 200px;
+  height: 200px;
+}
+
+#reviews {
+  background: white;
+  overflow-y: auto;
+}
+
+#cards {
+  grid-column-end: span 2;
+  background: red;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 800px;
+  gap: 30px;
+}
+
+#cards-header {
+  grid-column-end: span 4;
+  font-size: 100px;
+  font-family: "Pokemon Solid", sans-serif;
+  letter-spacing: 8px;
+  color: yellow;
+  -webkit-text-stroke: 0.1rem blue;
+}
+
+.card {
+  background: white;
+  border-radius: 30px;
+  border: 2px solid royalblue;
+  height: 300px;
+  font-family: "Pokemon Solid", sans-serif;
+  letter-spacing: 5px;
+}
+
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 1px 2px 15px 4px #000000;
 }

@@ -1,30 +1,35 @@
-// DOM global selectors
 const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
-const pokemonImage = document.createElement("img");
-const pokemonContainer = document.querySelector("#pokemon-container");
+
+// DOM global selectors
+const cardsDisplay = document.querySelector("#cards");
 const pokemonDisplay = document.querySelector("#pokemon-display");
 
 // **********************************FETCHES**************************************
-// fetch containing array with all pokemon
+
+// GET Array of Pokemon
 function getPokemonArray() {
   fetch(pokeUrl + "?limit=151")
     .then((response) => response.json())
-    .then((arrayOfPokemon) => loadOnePokemon(arrayOfPokemon.results[0]));
+    .then((arrayOfPokemon) =>
+      arrayOfPokemon.results.forEach((pokemon) => renderCard(pokemon))
+    );
 }
-// fetch containing pokemon attributes/info
+// GET Single Pokemon Details
 function loadOnePokemon(pokemonObj) {
   fetch(`${pokeUrl}/${pokemonObj.name}`)
     .then((response) => response.json())
-    .then((pokemon) => renderArray(pokemon));
+    .then((pokemon) => renderDisplay(pokemon));
 }
-// fetch containing pokemon description
+// GET Pokemon Species that copnstains Description
 function getPokemonDescription(pokemonObj) {
   fetch(`${pokeUrl}-species/${pokemonObj.name}`)
     .then((response) => response.json())
     .then((species) => console.log(species));
 }
 
-function renderArray(pokeArray) {
+// **********************************FUNCTIONS**************************************
+
+function renderDisplay(pokeArray) {
   // creating single pokemon object
   const pokemon = {};
   pokemon["name"] = pokeArray.name; // pokemon name
@@ -43,5 +48,16 @@ function renderArray(pokeArray) {
   // console.log(getPokemonDescription(pokeArray.results[0]));
 }
 
-// initializers
+function renderCard(pokemon) {
+  const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+  const div = document.createElement("div");
+  div.className = "card";
+  div.innerHTML = `
+      <h1>${name}</h1>
+  `;
+  cardsDisplay.appendChild(div);
+}
+
+// **********************************INITIALIZERS**************************************
+
 getPokemonArray();
