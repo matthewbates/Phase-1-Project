@@ -2,11 +2,13 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 const cardsDisplay = document.querySelector("#cards");
 const pokemonDisplay = document.querySelector("#pokemon-display");
 const newReview = document.querySelector("#review-form");
+const button = newReview.children[1];
+console.log(button);
 const reviewPosts = document.querySelector("#posted-reviews");
 
-// ***FETCHES***
+// ***FETCHES*** //
 
-// GET Array of Pokemon
+// GET array of pokemon
 function getPokemonArray() {
   fetch(pokeUrl + "?limit=151")
     .then((response) => response.json())
@@ -17,14 +19,14 @@ function getPokemonArray() {
     });
 }
 
-// GET Pokemon Image
+// GET pokemon image
 function loadPokemonCard(pokemonObj) {
   fetch(`${pokeUrl}/${pokemonObj.name}`)
     .then((response) => response.json())
     .then((pokemon) => renderInfo(pokemon));
 }
 
-// GET Single Pokemon Details
+// GET single pokemon details
 function loadOnePokemon(pokemonObj) {
   fetch(`${pokeUrl}/${pokemonObj.name}`)
     .then((response) => response.json())
@@ -34,15 +36,16 @@ function loadOnePokemon(pokemonObj) {
     });
 }
 
-// GET Pokemon Species that contains Description
+// GET pokemon description that contains species
 function getPokemonDescription(pokemonObj) {
   fetch(`${pokeUrl}-species/${pokemonObj.name}`)
     .then((response) => response.json())
     .then((species) => renderPokemonDescription(species));
 }
 
-// ***LISTENERS***
+// ***LISTENERS*** //
 
+// submits a new review
 newReview.addEventListener("submit", (e) => {
   e.preventDefault();
   const p = document.createElement("p");
@@ -51,25 +54,24 @@ newReview.addEventListener("submit", (e) => {
   newReview.reset();
 });
 
-// ***FUNCTIONS***
+// ***FUNCTIONS*** //
 
-// Scroll To The Top Of The Page
+// scroll to the top of the page
 function scrollToTop() {
   const button = document.createElement("img");
-  button.className = "card"
-  button.id = "pokeball"
-  button.src = "https://i.etsystatic.com/19790818/r/il/8267c8/3525798335/il_1588xN.3525798335_gybz.jpg"
-  button.addEventListener("click", (e) =>
-    cardsDisplay.animate({ scrollTop: 0 }, "fast")
-  );
-  // button.textContent = "Back to Top";
+  button.className = "card";
+  button.id = "pokeball";
+  button.src =
+    "https://i.etsystatic.com/19790818/r/il/8267c8/3525798335/il_1588xN.3525798335_gybz.jpg";
+  button.addEventListener("click", (e) => {
+    cardsDisplay.scrollTop = 0;
+  });
   cardsDisplay.appendChild(button);
 }
 
+// renders pokemon display info @ top of page
 function renderDisplay(pokemon) {
   console.log(pokemon);
-  // creating single pokemon object
-  // grab weight, height, first 4 moves of moves array, types, hp
   const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const moves = getMoves(pokemon);
   const types = getTypes(pokemon);
@@ -81,19 +83,15 @@ function renderDisplay(pokemon) {
             <img src="${
               pokemon.sprites.other["official-artwork"].front_default
             }" id="display-image" alt="">
-            <p>Type: ${types.join(", ")}
-            <p>HP: ${pokemon.stats[0].base_stat}</p>
-            <p>Height: ${pokemon.height / 10} m</p>
-            <p>Weight: ${pokemon.weight} lbs</p>
-            <p>Moves: ${moves.join(", ")}
-            
+            <p>Type: <b>${types.join(", ")}</b>
+            <p>HP: <b>${pokemon.stats[0].base_stat}</b></p>
+            <p>Height: <b>${pokemon.height / 10} m</b></p>
+            <p>Weight: <b>${pokemon.weight} lbs</b></p>
+            <p>Moves: <b>${moves.join(", ")}</b>
             `;
-
-  // depending on the index provided, this will give us the pokemon name, id, and image from pokemon object
-  // loadOnePokemon(pokeArray.results[0]);
-  // console.log(getPokemonDescription(pokeArray.results[0]));
 }
 
+// renders pokemon card
 function renderCard(pokemon) {
   const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const div = document.createElement("div");
@@ -109,6 +107,7 @@ function renderCard(pokemon) {
   cardsDisplay.appendChild(div);
 }
 
+// renders pokemon card info
 function renderInfo(pokemon) {
   const card = document.querySelector(`#${pokemon.name}`);
   const image = document.createElement("img");
@@ -126,17 +125,19 @@ function renderInfo(pokemon) {
   image.src = pokemon.sprites.front_default;
   card.appendChild(image);
   card.appendChild(p);
-
-  // mouse-over event to show back_default of pokemon?
 }
 
+// renders pokemon description to english, if not default
 function renderPokemonDescription(species) {
   const p = document.querySelector("#pokemon-description");
-  const desc = species.flavor_text_entries.find(entry => entry.language.name === "en");
-  console.log(desc)
+  const desc = species.flavor_text_entries.find(
+    (entry) => entry.language.name === "en"
+  );
+  console.log(desc);
   p.textContent = desc.flavor_text;
 }
 
+// loops through moves and returns first 4
 function getMoves(pokemon) {
   const array = [];
   for (let counter = 0; counter < 4; counter++) {
@@ -145,6 +146,7 @@ function getMoves(pokemon) {
   return array;
 }
 
+// loops through types and returns first 2
 function getTypes(pokemon) {
   const array = [];
   for (let counter = 0; counter < pokemon.types.length; counter++) {
@@ -153,13 +155,6 @@ function getTypes(pokemon) {
   return array;
 }
 
-// ***INITIALIZERS***
+// ***INITIALIZERS*** //
 
 getPokemonArray();
-
-// ***EVENT LISTENERS***
-// 'submit' - newReview (add a new review of the pokemon selected)
-// 'click' - button (when at the bottom of the page, scroll back to the top of the page)
-// 'click' - div (when a pokemon container is clicked, render the info at the top of the page)
-// 'mouseenter - div (when a pokemon container is mouse-overed, render the sprite.back_default image)
-// 'mouseleave - div (when the mouse exits the pokemon container, return the image back to sprite-front_default)

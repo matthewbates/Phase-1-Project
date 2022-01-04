@@ -1,5 +1,5 @@
 body {
-  background-color: blue;
+  background-color: black;
 }
 
 h1 {
@@ -21,7 +21,7 @@ h1 {
 
 .container {
   display: grid;
-  grid-template-columns: 66% 33%;
+  grid-template-columns: auto 600px;
   grid-template-rows: 35% auto;
   height: auto;
   gap: 10px;
@@ -33,12 +33,13 @@ h1 {
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto auto auto auto;
   padding-left: 15px;
+  overflow-x: auto
 }
 
 #pokemon-description {
   font-style: italic;
   position: relative;
-  top: -20px;
+  top: -16px;
 }
 
 #display-image {
@@ -48,21 +49,43 @@ h1 {
   height: 250px;
 }
 
+#review-form {
+  /* text-align: center; */
+}
+
 #reviews {
-  background: white;
-  overflow-y: auto;
+  background-image: url("http://gran4u.xtgem.com/Pokedex.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto
+}
+
+#text-field {
+  height: 252px;
+  width: 244px;
+  margin-left: 20px;
+  margin-top: 23px
+
+}
+
+#submit-button {
+  margin-top: 44px;
+  margin-left: 200px;
+  padding: 12px;
 }
 
 #cards {
   grid-column-end: span 2;
   background: red;
   overflow-y: auto;
+  overflow-x: auto;
   display: grid;
-  grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+  grid-template-columns: 200px 200px 200px 200px;
   padding-left: 15px;
   padding-right: 15px;
   height: 800px;
-  gap: 30px;
+  gap: 80px;
+  justify-content: center
 }
 
 #cards-header {
@@ -83,6 +106,16 @@ h1 {
   text-align: center;
 }
 
+#pokeball {
+  display: block;
+  height: 150px;
+  
+}
+
+#text-field {
+  
+}
+
 .card-image {
   display: block;
   margin-left: auto;
@@ -97,68 +130,48 @@ h1 {
 .normal {
   background: #a8a878;
 }
-
 .fire {
   background: #f08030;
 }
-
 .water {
   background: #6890f0;
 }
-
 .electric {
   background: #f8d030;
 }
-
 .grass {
   background: #78c850;
 }
-
 .ice {
   background: #98d8d8;
 }
-
 .ground {
   background: #e0c068;
 }
-
 .flying {
   background: #a890f0;
 }
-
 .ghost {
   background: #705898;
 }
-
 .rock {
   background: #b8a038;
 }
-
 .fighting {
   background: #c03028;
 }
-
 .poison {
   background: #a040a0;
 }
-
 .psychic {
   background: #f85888;
 }
-
 .bug {
   background: #a8b820;
 }
-
 .dark {
   background: #705848;
 }
-
 .fighting {
   background: #c03028;
-}
-
-#pokeball {
-  display: block;
-  height: 150px;
 }
