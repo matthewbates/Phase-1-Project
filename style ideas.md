@@ -6,4 +6,6 @@ TO-DO:
 5.) create a local db.json database
 IDEAS:
 -link that loads evolution chain
--
+-how can we get the pokemon review comments to persist when you select a different pokemon?
+-how can we get the pokemon review comnets to persits thwne hyou selelct a diferep oikeene
+What else can we do to make the project more dynamic?
