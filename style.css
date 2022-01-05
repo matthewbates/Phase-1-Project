@@ -6,6 +6,10 @@ h1 {
   text-align: center;
 }
 
+textarea {
+  resize: none;
+}
+
 #pokemon-container {
   display: flex;
   justify-content: center;
@@ -21,19 +25,26 @@ h1 {
 
 .container {
   display: grid;
-  grid-template-columns: auto 600px;
+  grid-template-columns: 960px 600px;
   grid-template-rows: 35% auto;
   height: auto;
   gap: 10px;
+  max-width: 1600px;
+  margin: auto;
 }
 
 #pokemon-display {
-  background: white;
   display: grid;
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto auto auto auto;
   padding-left: 15px;
-  overflow-x: auto
+  overflow-x: auto;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  background-size: contain;
+  justify-self: center;
 }
 
 #pokemon-description {
@@ -49,29 +60,49 @@ h1 {
   height: 250px;
 }
 
-#review-form {
-  /* text-align: center; */
-}
-
 #reviews {
   background-image: url("http://gran4u.xtgem.com/Pokedex.png");
   background-repeat: no-repeat;
   background-size: cover;
-  width: auto
+  /* width: auto; */
+  overflow-x: auto;
+  margin-right: 20px;
+}
+
+#posted-reviews {
+  background-color: lime;
+  text-align: center;
+  height: 282px;
+  width: 220px;
+  margin-left: 335px;
+  margin-top: -255px;
+  border-radius: 5px;
+  border: 2px solid black;
+  overflow-y: auto;
 }
 
 #text-field {
-  height: 252px;
-  width: 244px;
+  height: 245px;
+  width: 238px;
   margin-left: 20px;
-  margin-top: 23px
-
+  margin-top: 38px;
 }
 
 #submit-button {
-  margin-top: 44px;
-  margin-left: 200px;
-  padding: 12px;
+  display: block;
+  width: 60px;
+  height: 60px;
+  line-height: 20px;
+  border: 2px solid #f5f5f5;
+  border-radius: 50%;
+  color: #f5f5f5;
+  text-align: center;
+  text-decoration: none;
+  background: blue;
+  font-size: 12px;
+  font-weight: bold;
+  margin-left: 11px;
+  margin-top: 12px;
 }
 
 #cards {
@@ -85,7 +116,7 @@ h1 {
   padding-right: 15px;
   height: 800px;
   gap: 80px;
-  justify-content: center
+  justify-content: center;
 }
 
 #cards-header {
@@ -109,11 +140,6 @@ h1 {
 #pokeball {
   display: block;
   height: 150px;
-  
-}
-
-#text-field {
-  
 }
 
 .card-image {
@@ -125,6 +151,11 @@ h1 {
 .card:hover {
   transform: scale(1.1);
   box-shadow: 1px 2px 15px 4px #000000;
+}
+
+.new-review {
+  border: 1px solid black;
+  padding-top: 10px;
 }
 
 .normal {
@@ -142,6 +173,7 @@ h1 {
 .grass {
   background: #78c850;
 }
+
 .ice {
   background: #98d8d8;
 }

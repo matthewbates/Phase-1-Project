@@ -2,9 +2,8 @@ const pokeUrl = "https://pokeapi.co/api/v2/pokemon";
 const cardsDisplay = document.querySelector("#cards");
 const pokemonDisplay = document.querySelector("#pokemon-display");
 const newReview = document.querySelector("#review-form");
-const button = newReview.children[1];
-console.log(button);
 const reviewPosts = document.querySelector("#posted-reviews");
+const textField = document.querySelector("#text-field");
 
 // ***FETCHES*** //
 
@@ -48,9 +47,12 @@ function getPokemonDescription(pokemonObj) {
 // submits a new review
 newReview.addEventListener("submit", (e) => {
   e.preventDefault();
-  const p = document.createElement("p");
-  p.textContent = e.target["text-field"].value;
-  reviewPosts.appendChild(p);
+  // const p = document.createElement("p");
+  const div = document.createElement("div");
+  div.className = "new-review";
+  div.textContent = e.target["text-field"].value;
+  // p.textContent = e.target["text-field"].value;
+  reviewPosts.appendChild(div);
   newReview.reset();
 });
 
@@ -75,6 +77,7 @@ function renderDisplay(pokemon) {
   const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
   const moves = getMoves(pokemon);
   const types = getTypes(pokemon);
+  pokemonDisplay.style.backgroundImage = `url(assets/${types[0]}.jpeg)`;
   pokemonDisplay.innerHTML = `
             <div>
               <h3><b><u>${name}</u></b></h3>
