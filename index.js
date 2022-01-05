@@ -80,7 +80,7 @@ function renderDisplay(pokemon) {
   pokemonDisplay.style.backgroundImage = `url(assets/${types[0]}.jpeg)`;
   pokemonDisplay.innerHTML = `
             <div>
-              <h3><b><u>${name}</u></b></h3>
+              <h2><b><u>${name}</u></b></h2>
               <p id="pokemon-description"></p>
             </div>
             <img src="${

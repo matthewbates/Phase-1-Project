@@ -1,5 +1,11 @@
+@font-face {
+  font-family: "digital-7";
+  src: url("assets/digital-7 (1).ttf");
+}
+
 body {
-  background-color: black;
+  background-image: url("https://static1.srcdn.com/wordpress/wp-content/uploads/2021/01/Illustration.jpg?q=50&fit=crop&w=740&h=370&dpr=1.5");
+  /* background-repeat: no-repeat; */
 }
 
 h1 {
@@ -44,7 +50,7 @@ textarea {
   max-height: 100%;
   height: auto;
   background-size: contain;
-  justify-self: center;
+  /* justify-self: center; */
 }
 
 #pokemon-description {
@@ -66,26 +72,34 @@ textarea {
   background-size: cover;
   /* width: auto; */
   overflow-x: auto;
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 
 #posted-reviews {
   background-color: lime;
+  font-family: "digital-7";
   text-align: center;
   height: 282px;
-  width: 220px;
-  margin-left: 335px;
+  width: 226px;
+  margin-left: 346px;
   margin-top: -255px;
   border-radius: 5px;
-  border: 2px solid black;
+  border: 1px solid black;
   overflow-y: auto;
 }
 
+.new-review {
+  border: 1px solid black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  word-wrap: break-word;
+}
+
 #text-field {
-  height: 245px;
-  width: 238px;
-  margin-left: 20px;
-  margin-top: 38px;
+  height: 250px;
+  width: 246px;
+  margin-left: 21px;
+  margin-top: 41px;
 }
 
 #submit-button {
@@ -153,11 +167,6 @@ textarea {
   box-shadow: 1px 2px 15px 4px #000000;
 }
 
-.new-review {
-  border: 1px solid black;
-  padding-top: 10px;
-}
-
 .normal {
   background: #a8a878;
 }
@@ -173,7 +182,6 @@ textarea {
 .grass {
   background: #78c850;
 }
-
 .ice {
   background: #98d8d8;
 }

@@ -13,8 +13,6 @@ TO-DO:
 // 'mouseenter - div (when a pokemon container is mouse-overed, render the sprite.back_default image)
 // 'mouseleave - div (when the mouse exits the pokemon container, return the image back to sprite-front_default)
 
-// *** POKEMON WALLPAPERS *** //
-
-  margin-top: 44px;
-  margin-left: 200px;
-  padding: 12px;
+took out justify-self: center;
+  -alighned the <div> to #container
+took out margin-right: 20px from pokedex
