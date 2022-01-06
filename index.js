@@ -100,7 +100,7 @@ function renderCard(pokemon) {
   const div = document.createElement("div");
   div.addEventListener("click", (e) => {
     loadOnePokemon(pokemon);
-    reviewPosts.innerHTML = "";
+    reviewPosts.innerHTML = "<h2>REVIEWS</h2>";
   });
   div.className = "card";
   div.id = pokemon.name;
