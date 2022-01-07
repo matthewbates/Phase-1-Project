@@ -143,8 +143,12 @@ function renderPokemonDescription(species) {
 // loops through moves and returns first 4
 function getMoves(pokemon) {
   const array = [];
-  for (let counter = 0; counter < 4; counter++) {
-    array.push(pokemon.moves[counter].move.name);
+  if (pokemon.moves.length < 4) {
+    pokemon.moves.forEach((move) => array.push(move.move.name));
+  } else {
+    for (let counter = 0; counter < 4; counter++) {
+      array.push(pokemon.moves[counter].move.name);
+    }
   }
   return array;
 }
